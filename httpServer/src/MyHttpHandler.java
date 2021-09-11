@@ -1,6 +1,12 @@
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
+
+
+
+import Responses.GetDefault;
+
+
 import java.io.IOException;
 import java.io.OutputStream;
 
@@ -19,8 +25,10 @@ public class MyHttpHandler implements HttpHandler {
 
     private void handleGetResponse(HttpExchange httpExchange)  throws  IOException {
         OutputStream outputStream = httpExchange.getResponseBody();
-        String response = "help";
+        Gson gson = new Gson();
 
+        GetDefault response = new GetDefault("Success",Integer.toString((int) System.currentTimeMillis()),"Hello");
+        String JSONresponse =
 
         httpExchange.sendResponseHeaders(200, response.length());
 
